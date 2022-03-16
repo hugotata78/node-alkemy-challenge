@@ -97,10 +97,10 @@ module.exports = {
     },
     orderMovie: async(req,res)=>{
         try {
-            const { order } = req.query
+            const { order,param } = req.query
             const movies = Movie.findAll({
                 Order:[
-                    [order]
+                    [param,order]
                 ]
             })
             res.json(movies)
