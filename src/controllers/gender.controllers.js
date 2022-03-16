@@ -45,13 +45,12 @@ module.exports = {
     updateGender: async (req,res)=>{
         const { id } = req.params
         try {
-
             const count = await Gender.update(req.body,{
                 where:{
                     id:id
                 }
             })
-            res.json(count[0] !== 0 ? 'Se modificaron los datos correctamente!' : 'No se pudo modificar los datos')
+            res.json(count[0] !== 0 ? 'Se modificaron los datos!' : 'No se pudo modificar los datos!')
         } catch (error) {
             res.json(error.message)
         }
