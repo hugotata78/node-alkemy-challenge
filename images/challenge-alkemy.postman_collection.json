@@ -1,0 +1,882 @@
+{
+	"info": {
+		"_postman_id": "69b3b343-9901-42b3-9a39-9c0757613132",
+		"name": "challenge-alkemy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "character",
+			"item": [
+				{
+					"name": "create character",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Pato Donald",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Hugo/node-alkemy-challenge/images/donald.jpg"
+								},
+								{
+									"key": "history",
+									"value": "Historia de Donald",
+									"type": "text"
+								},
+								{
+									"key": "weight",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "85",
+									"type": "text"
+								},
+								{
+									"key": "movieId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/characters/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/characters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update character",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "weight",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "movieId",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/characters/edit/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"edit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete character",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/characters/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get character by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/characters/name/search?name=Mikey Mouse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"name",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Mikey Mouse"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get character by age",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/characters/age/search?age=25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"age",
+								"search"
+							],
+							"query": [
+								{
+									"key": "age",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCharacterByMovieId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/characters/movieId/search?movieId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"movieId",
+								"search"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Imh1Z290YXRhNzgiLCJlbWFpbCI6Imh1Z290YXRhcmlub2ZmQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJG8zS21Tc3JvM1hwQzR4dy95OUdFdS5XZlhRUVJJZmpSS3ZqV3BSVjJxTEM5SzNBdmQ5MTBDIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIn0sImlhdCI6MTY0NzQ1NDg0MiwiZXhwIjoxNjQ3NTQxMjQyfQ.IBtomb6wN8Bnar1kXwqTb9uSxxN7ZHHpCK1Cmsuc9nk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "movieId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/characters/add-movie/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"characters",
+								"add-movie",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "createMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Mikey Mouse y los superpilotos",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Hugo/node-alkemy-challenge/images/superpilotos.jpg"
+								},
+								{
+									"key": "creationDate",
+									"value": "2022-03-14",
+									"type": "text"
+								},
+								{
+									"key": "qualification",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "genderId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "characterId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/movies/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMovies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMovieByTitle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/movies/title/search?title=La Pelicula de Goofy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"title",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "La Pelicula de Goofy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMovieByGenderId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/movies/gender/search?genderId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"gender",
+								"search"
+							],
+							"query": [
+								{
+									"key": "genderId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderMovie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/movies?order=DESC&param=name",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "param",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "creationDate",
+									"value": "1997-03-12",
+									"type": "text"
+								},
+								{
+									"key": "characterId",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/movies/edit/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"edit",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMovie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/movies/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCharacter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Imh1Z290YXRhNzgiLCJlbWFpbCI6Imh1Z290YXRhcmlub2ZmQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJG8zS21Tc3JvM1hwQzR4dy95OUdFdS5XZlhRUVJJZmpSS3ZqV3BSVjJxTEM5SzNBdmQ5MTBDIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIn0sImlhdCI6MTY0NzQ1NDg0MiwiZXhwIjoxNjQ3NTQxMjQyfQ.IBtomb6wN8Bnar1kXwqTb9uSxxN7ZHHpCK1Cmsuc9nk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "characterId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/movies/add-character/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"add-character",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addGender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Imh1Z290YXRhNzgiLCJlbWFpbCI6Imh1Z290YXRhcmlub2ZmQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJG8zS21Tc3JvM1hwQzR4dy95OUdFdS5XZlhRUVJJZmpSS3ZqV3BSVjJxTEM5SzNBdmQ5MTBDIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIn0sImlhdCI6MTY0NzQ1NDg0MiwiZXhwIjoxNjQ3NTQxMjQyfQ.IBtomb6wN8Bnar1kXwqTb9uSxxN7ZHHpCK1Cmsuc9nk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "genderId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/movies/add-gender/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"movies",
+								"add-gender",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hugotatarinoff@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "hugotata78",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "hugotatarinoff@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gender",
+			"item": [
+				{
+					"name": "createGender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Imh1Z290YXRhNzgiLCJlbWFpbCI6Imh1Z290YXRhcmlub2ZmQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJG8zS21Tc3JvM1hwQzR4dy95OUdFdS5XZlhRUVJJZmpSS3ZqV3BSVjJxTEM5SzNBdmQ5MTBDIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0xNlQxNTozOToxNi4wMDBaIn0sImlhdCI6MTY0NzQ1NDg0MiwiZXhwIjoxNjQ3NTQxMjQyfQ.IBtomb6wN8Bnar1kXwqTb9uSxxN7ZHHpCK1Cmsuc9nk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "trhiller",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Hugo/node-alkemy-challenge/images/pluto.jpg"
+								},
+								{
+									"key": "movieId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/genders/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"genders",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGenders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/genders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"genders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editGenders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "comedia",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/genders/edit/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"genders",
+								"edit",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteGender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJodWdvdGF0YTc4IiwiZW1haWwiOiJodWdvdGF0YXJpbm9mZkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQzV1VzMGxZOVhXaGNJL1o1TXdMMFguMHJ1YzhyZUs5VGVRT2p6L09MVC9wVGNYOGNudEpuUyIsImNyZWF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjItMDMtMTJUMjE6MTU6MzkuMDAwWiJ9LCJpYXQiOjE2NDcyNjcxNzcsImV4cCI6MTY0NzM1MzU3N30.7N9f8q1alx47xov0fGOWP5fVo-nvTf33UKwM0ZbH1jM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/genders/delete/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"genders",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
