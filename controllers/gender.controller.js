@@ -35,12 +35,13 @@ module.exports = {
     getGenderById: async (req, res) => {
         try {
             const { id } = req.params
-            const gender = await Gender.findByPk(id,{
+            const gender = await Gender.findByPk(id, {
                 include: [{
                     model: Movie,
                     as: 'movies'
                 }]
             })
+            if (!gender) return res.status(404).json({ msg: 'No se encontró el Género!' })
             res.status(200).json({ gender })
         } catch (error) {
             res.status(500).json({ error })
@@ -50,11 +51,22 @@ module.exports = {
         try {
             const { id } = req.params
             const { movieId } = req.body
-            const gender = await Gender.findByPk(id)
-            const movie = await Movie.findByPk(movieId)
-            if(!movie) return res.status(404).json('No se encontró la pelicula y/o serie!')
-            gender.addMovie(movie)
-            res.status(201).json({ msg: 'Se agrego la pelicula y/o serie correctamente!' })
+            const gender = await Gender.findByPk(id, {
+                include: {
+                    model: Movie,
+                    as: 'movies'
+                }
+            })
+            if (!gender) {
+                return res.status(404).json({ msg: 'No se encontró el Género!' })
+            } else {
+                const findMovieId = gender.movies.find(m => m.id == movieId)
+                if (findMovieId) return res.status(400).json({ msg: `El género ${gender.name} ya cuenta con la pelicula y/o serie con el id ${movieId}` })
+                const movie = await Movie.findByPk(movieId)
+                if (!movie) return res.status(404).json({ msg: 'No se encontró la pelicula y/o serie!' })
+                gender.addMovie(movie)
+                res.status(201).json({ msg: 'Se agrego la pelicula y/o serie correctamente!' })
+            }
         } catch (error) {
             res.status(500).json({ error })
         }
@@ -67,8 +79,8 @@ module.exports = {
                     id: id
                 }
             })
-            if(!response[0]) return res.status(404).json({msg:'No se encontró el Genero'})
-            res.status(205).json({response})
+            if (!response[0]) return res.status(404).json({ msg: 'No se encontró el Género!' })
+            res.status(205).json({ response })
         } catch (error) {
             res.status(500).json({ error })
         }
@@ -82,8 +94,8 @@ module.exports = {
                     id: id
                 }
             })
-            if(!response) return res.status(404).json({msg:'No se encontró el Genero'})
-            res.status(205).json({response})
+            if (!response) return res.status(404).json({ msg: 'No se encontró el Género!' })
+            res.status(205).json({ response })
         } catch (error) {
             res.status(500).json({ error })
         }

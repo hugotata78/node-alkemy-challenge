@@ -6,7 +6,7 @@ const { Auth, checkPermissionsDelete, checkPermissionsUpdate, idExists}= require
 const router = Router()
 
 router.get('/', getAllUsers)
-router.get('/:id', Auth, getUser)
+router.get('/:id', getUser)
 router.put('/:id',Auth, checkPermissionsUpdate, updateUser)
 router.delete('/:id', Auth, checkPermissionsDelete, deleteUser)
 
