@@ -21,7 +21,7 @@ module.exports = {
     },
     getMovies: async (req, res) => {
         try {
-            const {order} = req.query
+            const { order } = req.query
             const movies = await Movie.findAll({
                 attributes: ['title', 'image', 'creationDate'],
                 order: [
@@ -37,10 +37,26 @@ module.exports = {
         try {
             const { id } = req.params
             const { characterId } = req.body
-            const movie = await Movie.findByPk(id)
-            const character = await Character.findByPk(characterId)
-            movie.addCharacter(character)
-            res.status(201).json({ msg: 'Se agrego el personaje correctamente!' })
+            const movie = await Movie.findByPk(id, {
+                include: {
+                    model: Character,
+                    as: 'characters'
+                }
+            })
+            if (!movie) {
+                res.status(404).json({ msg: 'No se encontró la película y/o serie!' })
+            } else {
+                const findCharacterId = movie.characters.find(c => c.id == characterId)
+                if (findCharacterId) {
+                    return res.status(400).json({ msg: `La película y/o serie ${movie.title} ya cuenta con el personaje con el id ${characterId}!` })
+                }
+                const character = await Character.findByPk(characterId)
+                if (!character) {
+                    return res.status(404).json({ msg: 'No se encontró el Personaje!' })
+                }
+                movie.addCharacter(character)
+                res.status(201).json({ msg: 'Se agrego el personaje correctamente!' })
+            }
         } catch (error) {
             res.status(500).json({ error })
         }
@@ -49,10 +65,27 @@ module.exports = {
         try {
             const { id } = req.params
             const { genderId } = req.body
-            const movie = await Movie.findByPk(id)
-            const gender = await Gender.findByPk(genderId)
-            movie.addGender(gender)
-            res.status(201).json({ msg: 'Se agrego genero correctamente!' })
+            const movie = await Movie.findByPk(id, {
+                include: {
+                    model: Gender,
+                    as: 'genders'
+                }
+            })
+            if (!movie) {
+                res.status(404).json({ msg: 'No se encontró la película y/o serie!' })
+            } else {
+                const findGenderId = movie.genders.find(g => g.id == genderId)
+                if (findGenderId) {
+                    return res.status(400).json({ msg: `La pelicula y/o serie ${movie.title} ya cuenta con el género con el id ${genderId}!` })
+                }
+                const gender = await Gender.findByPk(genderId)
+                if (!gender) {
+                    return res.status(404).json({ msg: 'No se encontró el Género!' })
+                }
+                movie.addGender(gender)
+                res.status(201).json({ msg: 'Se agrego genero correctamente!' })
+            }
+
         } catch (error) {
             res.status(500).json({ error })
         }
