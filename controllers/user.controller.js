@@ -79,7 +79,7 @@ module.exports = {
                 }
             })
 
-            if (!user) return res.status(404).json({ msg: 'User not found!' })
+            if (!user) return res.status(404).json({ msg: 'No se encontró el Usuario!' })
             res.status(200).json({ user })
         } catch (error) {
             res.status(500).json({ error })
@@ -94,7 +94,7 @@ module.exports = {
                     id: id
                 }
             })
-            if (!result[0]) return res.status(404).json({ result })
+            if (!result[0]) return res.status(404).json({ msg: 'No se encontró el Usuario!' })
             res.status(204).json({ result })
         } catch (error) {
             res.status(500).json({ error })
@@ -109,7 +109,7 @@ module.exports = {
                     id: id
                 }
             })
-            if (!result) return res.status(404).json({ result })
+            if (!result) return res.status(404).json({ msg: 'No se encontró el Usuario!' })
             res.status(205).json({ result })
         } catch (error) {
             res.status(500).json({ error })
