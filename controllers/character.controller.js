@@ -37,10 +37,26 @@ module.exports = {
         try {
             const { id } = req.params
             const { movieId } = req.body
-            const character = await Character.findByPk(id)
-            const movie = await Movie.findByPk(movieId)
-            character.addMovie(movie)
-            res.status(201).json({ msg: 'Se agrego la pelicula y/o serie correctamente!' })
+            const character = await Character.findByPk(id, {
+                include: {
+                    model: Movie,
+                    as: 'movies'
+                }
+            })
+            if (!character) {
+                res.status(404).json({ msg: 'No se encotro el personaje!' })
+            } else {
+                const findMovieId = character.movies.find(m=>m.id == movieId)
+                if(findMovieId){
+                    return res.status(400).json({ msg:`El personaje ${character.name} ya cuenta con la película y/o serie con el id ${movieId}`})
+                }
+                const movie = await Movie.findByPk(movieId)
+                if(!movie){
+                    return res.status(404).json({ msg:'No se encontró la pelicula y/o serie!'})
+                }
+                character.addMovie(movie)
+                res.status(201).json({ msg: 'Se agrego la pelicula y/o serie correctamente!' })
+            }
         } catch (error) {
             res.status(500).json({ error })
         }
@@ -55,11 +71,11 @@ module.exports = {
                 include: [{
                     model: Movie,
                     as: 'movies',
-                    attributes:['title','image'],
+                    attributes: ['title', 'image'],
                 }]
             })
 
-            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje' })
+            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje!' })
             res.status(200).json({ character })
         } catch (error) {
             res.status(500).json({ error })
@@ -75,11 +91,11 @@ module.exports = {
                 include: [{
                     model: Movie,
                     as: 'movies',
-                    attributes:['title','image'],
+                    attributes: ['title', 'image'],
                 }]
             })
-            
-            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje' })
+
+            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje!' })
             res.status(200).json({ character })
         } catch (error) {
             res.status(500).json({ error })
@@ -95,10 +111,10 @@ module.exports = {
                 include: [{
                     model: Movie,
                     as: 'movies',
-                    attributes:['title','image'],
+                    attributes: ['title', 'image'],
                 }]
             })
-            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje' })
+            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje!' })
             res.status(200).json({ character })
         } catch (error) {
             res.status(500).json({ error })
@@ -112,7 +128,7 @@ module.exports = {
                     {
                         model: Movie,
                         as: 'movies',
-                        attributes:['title','image'],
+                        attributes: ['title', 'image'],
                         where: {
                             id: movieId
                         }

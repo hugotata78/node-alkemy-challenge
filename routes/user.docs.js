@@ -25,7 +25,6 @@
  *        name: juanrios
  *        email: juanrios@gmail.com
  *        password: 123456789 
- *        roleId: 1
  */
 
 /**
@@ -70,7 +69,7 @@
  *                 type: object
  *                 $ref: '#/components/schemas/User'
  *       400:
- *         description: Bad request / request does not have a token
+ *         description: Bad request 
  *       401:
  *         description: Unauthorized
  *       404:
@@ -102,10 +101,10 @@
  *             type: object
  *             $ref: '#/components/schemas/User'
  *     responses:
- *       204:
+ *       205:
  *         description: Succesful response
  *       400:
- *          description: Bad request / request does not have a token
+ *          description: Bad request 
  *       401:
  *          description: Unauthorized
  *       404:
@@ -133,11 +132,11 @@
  *       205:
  *         description: Succesful response
  *       400:
- *         description: Bad request / request does not have a token
+ *         description: Bad request 
  *       401:
  *         description: Unauthorized
  *       404:
- *         description: Not found / user not found
+ *         description: Not found 
  *       500:
  *         description: Internal server error
  *     

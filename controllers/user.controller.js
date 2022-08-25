@@ -95,7 +95,7 @@ module.exports = {
                 }
             })
             if (!result[0]) return res.status(404).json({ msg: 'No se encontró el Usuario!' })
-            res.status(204).json({ result })
+            res.status(205).json({ result })
         } catch (error) {
             res.status(500).json({ error })
         }
