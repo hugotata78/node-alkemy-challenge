@@ -18,7 +18,7 @@ const Auth = async (req, res, next) => {
                 as: 'role'
             }
         })
-        if (!user) return res.json({ msg: 'Acceso denegado!' })
+        if (!user) return res.status(401).json({ msg: 'Acceso denegado!' })
         req.user = user
         next()
 

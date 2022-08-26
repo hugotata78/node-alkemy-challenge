@@ -1,3 +1,31 @@
+
+/**
+ * @swagger
+ * components: 
+ *  schemas:
+ *    Register:
+ *      type: object
+ *      properties: 
+ *        name:
+ *          type: string
+ *          description: the user name
+ *        email:
+ *          type: string
+ *          description: the user email
+ *        password:
+ *          type: string
+ *          description: the user password
+ *      required:
+ *        - name
+ *        - email
+ *        - password
+ *      example:
+ *        name: juanrios
+ *        email: juanrios@gmail.com
+ *        password: 123456789 
+ *     
+ */ 
+
 /**
  * @swagger
  * components: 
@@ -18,37 +46,6 @@
  *        
  */
 
-/**
- * @swagger
- * components: 
- *  schemas:
- *    User:
- *      type: object
- *      properties: 
- *        name:
- *          type: string
- *          description: the user name
- *        email:
- *          type: string
- *          description: the user email
- *        password:
- *          type: string
- *          description: the user password
- *        roleId:
- *          type: integer
- *          description: the user role
- *      required:
- *        - name
- *        - email
- *        - password
- *      example:
- *        name: juanrios
- *        email: juanrios@gmail.com
- *        password: 123456789 
- *        roleId: 1 
- *     
- */ 
-
 //register User
 
 /**
@@ -56,14 +53,14 @@
  * /api/auth/register:
  *  post:
  *    summary: create new user
- *    tags: [User]
+ *    tags: [Auth]
  *    requestBody:
  *      required: true
  *      content: 
  *        application/json:
  *          schema:
  *            type: objet
- *            $ref: '#/components/schemas/User'
+ *            $ref: '#/components/schemas/Register'
  *    responses: 
  *      201: 
  *        description: Ok
@@ -78,7 +75,7 @@
  * /api/auth/login:
  *  post:
  *    summary: login user
- *    tags: [User]
+ *    tags: [Auth]
  *    requestBody:
  *      required: true
  *      content: 

@@ -33,6 +33,26 @@ module.exports = {
         }
     },
 
+    getCharacterById: async (req, res) => {
+        try {
+            const { id } = req.params
+            const character = await Character.findOne({
+                where: {
+                    id: id
+                },
+                include: [{
+                    model: Movie,
+                    as: 'movies',
+                    attributes: ['title', 'image'],
+                }]
+            })
+
+            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje!' })
+            res.status(200).json({ character })
+        } catch (error) {
+            res.status(500).json({ error })
+        }
+    },
     characterAddMovie: async (req, res) => {
         try {
             const { id } = req.params
@@ -61,26 +81,7 @@ module.exports = {
             res.status(500).json({ error })
         }
     },
-    getCharacterById: async (req, res) => {
-        try {
-            const { id } = req.params
-            const character = await Character.findOne({
-                where: {
-                    id: id
-                },
-                include: [{
-                    model: Movie,
-                    as: 'movies',
-                    attributes: ['title', 'image'],
-                }]
-            })
-
-            if (!character) return res.status(404).json({ msg: 'No se encotro el personaje!' })
-            res.status(200).json({ character })
-        } catch (error) {
-            res.status(500).json({ error })
-        }
-    },
+    
     getCharacterByName: async (req, res) => {
         try {
             const { name } = req.query

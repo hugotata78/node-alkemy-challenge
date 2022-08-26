@@ -7,7 +7,7 @@
  *      properties:
  *        name:
  *          type: string
- *          description: the user lastName
+ *          description: the user name
  *        email:
  *          type: string
  *          description: the user email
@@ -70,8 +70,6 @@
  *                 $ref: '#/components/schemas/User'
  *       400:
  *         description: Bad request 
- *       401:
- *         description: Unauthorized
  *       404:
  *         description: Not found / user not found
  *       500:
@@ -84,7 +82,7 @@
  *  put:
  *     security:
  *        - bearerAuth: []
- *     summary: Updates a User
+ *     summary: Update a User
  *     tags: [User]
  *     parameters:
  *       - in: path
@@ -119,7 +117,7 @@
  *  delete:
  *     security:
  *        - bearerAuth: []
- *     summary: Deletes a user
+ *     summary: Delete a user
  *     tags: [User]
  *     parameters:
  *       - in: path
