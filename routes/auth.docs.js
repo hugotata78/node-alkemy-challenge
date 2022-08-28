@@ -2,33 +2,6 @@
 /**
  * @swagger
  * components: 
- *  schemas:
- *    Register:
- *      type: object
- *      properties: 
- *        name:
- *          type: string
- *          description: the user name
- *        email:
- *          type: string
- *          description: the user email
- *        password:
- *          type: string
- *          description: the user password
- *      required:
- *        - name
- *        - email
- *        - password
- *      example:
- *        name: juanrios
- *        email: juanrios@gmail.com
- *        password: 123456789 
- *     
- */ 
-
-/**
- * @swagger
- * components: 
  *  schemas: 
  *    Login:
  *      type: object
@@ -60,7 +33,7 @@
  *        application/json:
  *          schema:
  *            type: objet
- *            $ref: '#/components/schemas/Register'
+ *            $ref: '#/components/schemas/User'
  *    responses: 
  *      201: 
  *        description: Ok

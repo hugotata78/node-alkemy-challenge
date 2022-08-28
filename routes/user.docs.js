@@ -1,10 +1,10 @@
 /**
  * @swagger
- * components:
+ * components: 
  *  schemas:
  *    User:
  *      type: object
- *      properties:
+ *      properties: 
  *        name:
  *          type: string
  *          description: the user name
@@ -14,18 +14,18 @@
  *        password:
  *          type: string
  *          description: the user password
- *        roleId:
- *          type: integer
- *          description: the user role
  *      required:
- *        name
+ *        - name
  *        - email
  *        - password
  *      example:
  *        name: juanrios
  *        email: juanrios@gmail.com
  *        password: 123456789 
- */
+ *     
+ */ 
+
+//Get all Users
 
 /**
  * @swagger
@@ -35,7 +35,7 @@
  *     tags: [User]
  *     responses:
  *       200:
- *          description: all users
+ *          description: Return all users
  *          content:
  *             application/json:
  *              schemma:
@@ -43,15 +43,14 @@
  *                 $ref: '#/components/schemas/User'
  *       500:
  *          description: Internal server error
- */    
+ */ 
+
+//Get User by id
 
 /**
  * @swagger
  * /api/users/{id}:
  *  get:
- *     security:
- *        - bearerAuth: []
- *     summary: Returns a user
  *     tags: [User]
  *     parameters:
  *       - in: path
@@ -76,13 +75,15 @@
  *         description: Internal server error
  */
 
+//Update User
+
 /**
  * @swagger
  * /api/users/{id}:
  *  put:
  *     security:
  *        - bearerAuth: []
- *     summary: Update a User
+ *     summary: Update a user
  *     tags: [User]
  *     parameters:
  *       - in: path
@@ -100,16 +101,20 @@
  *             $ref: '#/components/schemas/User'
  *     responses:
  *       205:
- *         description: Succesful response
+ *         description: Ok
  *       400:
  *          description: Bad request 
  *       401:
  *          description: Unauthorized
+ *       403:
+ *          description: Forbidden
  *       404:
  *          description: Not found
  *       500:
  *          description: Internal server error
  */
+
+//Delete User
 
 /**
  * @swagger
@@ -128,11 +133,13 @@
  *         description: the user id
  *     responses:
  *       205:
- *         description: Succesful response
+ *         description: Ok
  *       400:
  *         description: Bad request 
  *       401:
  *         description: Unauthorized
+ *       403:
+ *          description: Forbidden
  *       404:
  *         description: Not found 
  *       500:

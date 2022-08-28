@@ -33,6 +33,12 @@
  *        image: https://static.wikia.nocookie.net/disney/images/6/6f/Donald_Duck.png/revision/latest/scale-to-width-down/350?cb=20140427112158&path-prefix=es
  *        weight: 25
  *        history: Historia de Mikey Mouse
+ */
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
  *    MovieId:
  *      type: object 
  *      properties:
@@ -64,12 +70,16 @@
  *            $ref: '#/components/schemas/Character'
  *    responses: 
  *      201: 
- *        description: Ok
+ *        description: Ok 
+ *      401:
+ *        description: Unauthorized
+ *      403:
+ *        description: Forbidden
  *      500: 
  *        description: Internal Server Error     
  */
 
-//Get all characters
+//Get all Characters
 
 /**
  * @swagger
@@ -79,7 +89,7 @@
  *     tags: [Character]
  *     responses:
  *       200:
- *          description: all characters
+ *          description: Return all characters
  *          content:
  *             application/json:
  *              schemma:
@@ -88,6 +98,8 @@
  *       500:
  *          description: Internal server error
  */    
+
+//Get Character by id
 
 /**
  * @swagger
@@ -118,6 +130,8 @@
  *         description: Internal server error
  */
 
+//Add Movie
+
 /**
  * @swagger
  * /api/characters/{id}:
@@ -146,12 +160,16 @@
  *       400:
  *         description: Bad request 
  *       401:
- *          description: Unauthorized
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden
  *       404:
  *         description: Not found
  *       500:
  *         description: Internal server error
  */
+
+//Get Character by name
 
 /**
  * @swagger
@@ -182,6 +200,8 @@
  *         description: Internal server error
  */
 
+//Get Character by age
+
 /**
  * @swagger
  * /api/characters/search/age:
@@ -211,11 +231,13 @@
  *         description: Internal server error
  */
 
+//Get Characters by movieId
+
 /**
  * @swagger
  * /api/characters/search/movieId:
  *  get:
- *     summary: Return a character
+ *     summary: Return characters by movieId
  *     tags: [Character]
  *     parameters:
  *       - in: query
@@ -226,7 +248,7 @@
  *         description: the character id
  *     responses:
  *       200:
- *          description: character
+ *          description: Return characters by movieId
  *          content:
  *             application/json:
  *              schemma:
@@ -240,13 +262,15 @@
  *         description: Internal server error
  */
 
+//Update Character
+
 /**
  * @swagger
  * /api/characters/{id}:
  *  put:
  *     security:
  *        - bearerAuth: []
- *     summary: Update a Character
+ *     summary: Update a character
  *     tags: [Character]
  *     parameters:
  *       - in: path
@@ -264,16 +288,20 @@
  *             $ref: '#/components/schemas/Character'
  *     responses:
  *       205:
- *         description: Succesful response
+ *         description: Ok
  *       400:
- *          description: Bad request 
+ *         description: Bad request 
  *       401:
- *          description: Unauthorized
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden
  *       404:
  *          description: Not found
  *       500:
  *          description: Internal server error
  */
+
+//Delete Character
 
 /**
  * @swagger
@@ -281,7 +309,7 @@
  *  delete:
  *     security:
  *        - bearerAuth: []
- *     summary: Deletes a Character
+ *     summary: Delete a Character
  *     tags: [Character]
  *     parameters:
  *       - in: path
@@ -292,14 +320,16 @@
  *         description: the character id
  *     responses:
  *       205:
- *         description: Succesful response
+ *         description: Ok
  *       400:
  *         description: Bad request 
  *       401:
  *         description: Unauthorized
+ *       403:
+ *         description: Forbidden
  *       404:
- *         description: Not found 
+ *          description: Not found
  *       500:
- *         description: Internal server error
+ *          description: Internal server error
  *     
  */
