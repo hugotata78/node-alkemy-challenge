@@ -9,13 +9,14 @@
  *          type: string
  *          description: the character name
  *        age:
- *          type: string
+ *          type: integer
  *          description: the character age
  *        image:
  *          type: string
  *          description: the character image
  *        weight:
- *          type: float
+ *          type: number
+ *          format: float
  *          description: the character weight
  *        history:
  *          type: string
