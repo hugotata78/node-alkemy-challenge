@@ -6,7 +6,7 @@ const swaggerDefinition = {
         openapi: '3.0.2',
         info: {
             title: 'Disney API',
-            description: 'API Documentation for use',
+            description: 'API Documentation Challenge Alkemy',
             version: '1.0.0',
         },
         servers: [

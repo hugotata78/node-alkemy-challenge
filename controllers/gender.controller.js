@@ -58,13 +58,13 @@ module.exports = {
             if (!gender) {
                 res.status(404).json({ msg: 'No se encontró el Género!' })
             } else {
-                const findMovieId = gender.movies.find(m => m.id == movieId)
-                if (findMovieId) {
-                    return res.status(400).json({ msg: `El género ${gender.name} ya cuenta con la pelicula y/o serie con el id ${movieId}` })
-                }
                 const movie = await Movie.findByPk(movieId)
                 if (!movie) {
                     return res.status(404).json({ msg: 'No se encontró la pelicula y/o serie!' })
+                }
+                const findMovieId = gender.movies.find(m => m.id == movie.id)
+                if (findMovieId) {
+                    return res.status(400).json({ msg: `El género ${gender.name} ya cuenta con la pelicula y/o serie con el id ${movie.id}` })
                 }
                 gender.addMovie(movie)
                 res.status(201).json({ msg: 'Se agrego la pelicula y/o serie correctamente!' })
