@@ -39,9 +39,9 @@ module.exports = {
                     email: email
                 },
             })
-            if (!user) return res.status(401).json('Email o contraseña invalido!')
+            if (!user) return res.status(401).json({msg:'Email o contraseña invalido!'})
             const pass = bcrypt.compareSync(password, user.password)
-            if (!pass) return res.status(401).json('Email o contraseña invalida')
+            if (!pass) return res.status(401).json({msg:'Email o contraseña invalido!'})
             const token = jwt.sign({ user: user }, process.env.PRIVATE_KEY, { expiresIn: process.env.EXPIRES_IN })
             res.status(200).json({ token })
         } catch (error) {
