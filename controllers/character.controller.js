@@ -7,15 +7,20 @@ module.exports = {
     createCharacter: async (req, res) => {
         try {
             const { name, age, weight, history } = req.body
-            fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
-            const image = Buffer.from(req.file.path + '.' + req.file.mimetype.split('/')[1])
+            const image = null
+            if (req.file) {
+                fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
+                image = Buffer.from(req.file.path + '.' + req.file.mimetype.split('/')[1])
+            }else{
+                image = req.body.image
+            }
 
             const character = await Character.create({
-                name,
-                age,
-                image,
-                weight,
-                history,
+                name: name,
+                age: age,
+                image: image,
+                weight: weight,
+                history: history,
             })
             res.status(201).json({ character })
         } catch (error) {
@@ -66,13 +71,13 @@ module.exports = {
             if (!character) {
                 res.status(404).json({ msg: 'No se encotro el personaje!' })
             } else {
-                const findMovieId = character.movies.find(m=>m.id == movieId)
-                if(findMovieId){
-                    return res.status(400).json({ msg:`El personaje ${character.name} ya cuenta con la película y/o serie con el id ${movieId}`})
+                const findMovieId = character.movies.find(m => m.id == movieId)
+                if (findMovieId) {
+                    return res.status(400).json({ msg: `El personaje ${character.name} ya cuenta con la película y/o serie con el id ${movieId}` })
                 }
                 const movie = await Movie.findByPk(movieId)
-                if(!movie){
-                    return res.status(404).json({ msg:'No se encontró la pelicula y/o serie!'})
+                if (!movie) {
+                    return res.status(404).json({ msg: 'No se encontró la pelicula y/o serie!' })
                 }
                 character.addMovie(movie)
                 res.status(201).json({ msg: 'Se agrego la pelicula y/o serie correctamente!' })
@@ -81,7 +86,7 @@ module.exports = {
             res.status(500).json({ error })
         }
     },
-    
+
     getCharacterByName: async (req, res) => {
         try {
             const { name } = req.query
