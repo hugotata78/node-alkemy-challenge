@@ -11,6 +11,6 @@ router.get('/:id',getRole)
 router.put('/:id',updateRole)
 router.delete('/:id',deleteRole)
 router.post('/:id/:userId',addUserRole)
-router.put('/:id/:userId',Auth,isAdmin,removeUserRole)
+router.put('/:id/:userId',removeUserRole)
 
 module.exports = router
