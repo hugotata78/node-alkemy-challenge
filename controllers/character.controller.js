@@ -1,26 +1,18 @@
 const { Character, Movie } = require('../models')
-const fs = require('fs')
-const { Buffer } = require('buffer')
+const { verifyReqFile } = require('../helpers/verifyReqFile')
 
 
 module.exports = {
     createCharacter: async (req, res) => {
         try {
             const { name, age, weight, history } = req.body
-            const image = null
-            if (req.file) {
-                fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
-                image = Buffer.from(req.file.path + '.' + req.file.mimetype.split('/')[1])
-            }else{
-                image = req.body.image
-            }
-
+            const image = verifyReqFile(req)
             const character = await Character.create({
-                name: name,
-                age: age,
-                image: image,
-                weight: weight,
-                history: history,
+                name,
+                age,
+                image,
+                weight,
+                history,
             })
             res.status(201).json({ character })
         } catch (error) {

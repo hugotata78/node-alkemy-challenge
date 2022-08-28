@@ -1,20 +1,12 @@
 const { Gender, Movie } = require('../models')
-const fs = require('fs')
-const { Buffer } = require('buffer')
-
+const { verifyReqFile } = require('../helpers/verifyReqFile')
 
 module.exports = {
     createGender: async (req, res) => {
         try {
             const { name } = req.body
-            const image = null
-            console.log(req.file)
-            if (req.file) {
-                fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
-                image = Buffer.from(req.file.path + '.' + req.file.mimetype.split('/')[1])
-            }else{
-                image = req.body.image
-            }
+            //fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
+            const image = verifyReqFile(req)
             const gender = await Gender.create({
                 name,
                 image
