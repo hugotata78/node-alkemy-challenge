@@ -120,10 +120,6 @@ module.exports = {
             if (!role) {
                 return res.status(404).json({ msg: 'No se encontró el rol' })
             } else {
-                const findUserId = role.user.find(u => u.id == userId)
-                if (!findUserId) {
-                    return res.status(400).json({ msg: `El usuario con el id ${userId} no cuenta con el rol que desea eliminar` })
-                }
                 const user = await User.findOne({
                     where: {
                         id: userId
@@ -131,6 +127,10 @@ module.exports = {
                 })
                 if (!user) {
                     return res.status(404).json({ msg: 'No se encontró el usuario!' })
+                }
+                const findUserId = role.user.find(u => u.id == user.id)
+                if (!findUserId) {
+                    return res.status(400).json({ msg: `El usuario con el id ${user.id} no cuenta con el rol que desea eliminar` })
                 }
                 const users = role.user.filter(u => u.id !== user.id)
                 role.setUser(users)
