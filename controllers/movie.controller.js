@@ -1,12 +1,10 @@
 const { Movie, Gender, Character } = require('../models')
-const fs = require('fs')
-const { Buffer } = require('buffer')
+const { verifyReqFile } = require('../helpers/verifyReqFile')
 module.exports = {
     createMovie: async (req, res) => {
         try {
             const { title, creationDate, qualification } = req.body
-            fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
-            const image = Buffer.from(req.file.path + '.' + req.file.mimetype.split('/')[1])
+            const image = verifyReqFile(req)
 
             const movie = await Movie.create({
                 title,
@@ -21,11 +19,11 @@ module.exports = {
     },
     getMovies: async (req, res) => {
         try {
-            const { order } = req.query
+            const { item, order } = req.query
             const movies = await Movie.findAll({
                 attributes: ['title', 'image', 'creationDate'],
                 order: [
-                    ['createdAt', order || 'ASC']
+                    [item || 'title', order || 'ASC']
                 ]
             })
             res.status(200).json({ movies })
@@ -46,13 +44,13 @@ module.exports = {
             if (!movie) {
                 res.status(404).json({ msg: 'No se encontró la película y/o serie!' })
             } else {
-                const findCharacterId = movie.characters.find(c => c.id == characterId)
-                if (findCharacterId) {
-                    return res.status(400).json({ msg: `La película y/o serie ${movie.title} ya cuenta con el personaje con el id ${characterId}!` })
-                }
                 const character = await Character.findByPk(characterId)
                 if (!character) {
                     return res.status(404).json({ msg: 'No se encontró el Personaje!' })
+                }
+                const findCharacterId = movie.characters.find(c => c.id == character.id)
+                if (findCharacterId) {
+                    return res.status(400).json({ msg: `La película y/o serie ${movie.title} ya cuenta con el personaje con el id ${character.id}!` })
                 }
                 movie.addCharacter(character)
                 res.status(201).json({ msg: 'Se agrego el personaje correctamente!' })
@@ -74,13 +72,13 @@ module.exports = {
             if (!movie) {
                 res.status(404).json({ msg: 'No se encontró la película y/o serie!' })
             } else {
-                const findGenderId = movie.genders.find(g => g.id == genderId)
-                if (findGenderId) {
-                    return res.status(400).json({ msg: `La pelicula y/o serie ${movie.title} ya cuenta con el género con el id ${genderId}!` })
-                }
                 const gender = await Gender.findByPk(genderId)
                 if (!gender) {
                     return res.status(404).json({ msg: 'No se encontró el Género!' })
+                }
+                const findGenderId = movie.genders.find(g => g.id == gender.id)
+                if (findGenderId) {
+                    return res.status(400).json({ msg: `La pelicula y/o serie ${movie.title} ya cuenta con el género con el id ${gender.id}!` })
                 }
                 movie.addGender(gender)
                 res.status(201).json({ msg: 'Se agrego genero correctamente!' })

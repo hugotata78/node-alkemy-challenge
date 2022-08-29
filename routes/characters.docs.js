@@ -156,7 +156,7 @@
  *             $ref: '#/components/schemas/MovieId'
  *     responses:
  *       201:
- *          description: Succesful response
+ *          description: ok
  *       400:
  *         description: Bad request 
  *       401:
@@ -186,7 +186,7 @@
  *         description: the character name
  *     responses:
  *       200:
- *          description: character
+ *          description: Return character by name
  *          content:
  *             application/json:
  *              schemma:
@@ -217,7 +217,7 @@
  *         description: the character age
  *     responses:
  *       200:
- *          description: character
+ *          description: Return characters by age
  *          content:
  *             application/json:
  *              schemma:

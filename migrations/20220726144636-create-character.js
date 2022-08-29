@@ -10,23 +10,23 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
       },
       age: {
         type: Sequelize.INTEGER,
-        allowNull:false
+        allowNull: false
       },
       image: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false,
       },
       weight: {
         type: Sequelize.FLOAT,
-        allowNull:false
+        allowNull: false
       },
       history: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

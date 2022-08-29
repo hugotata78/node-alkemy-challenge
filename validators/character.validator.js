@@ -12,9 +12,17 @@ const validateCharacter = [
         .isEmpty()
         .withMessage('Por favor ingrese la edad del personaje!'),
     check('image')
-        .not()
-        .isEmpty()
-        .withMessage('Por favor ingrese la imagen del personaje!'),
+        .custom((image, { req }) => {
+            if (image) {
+                return
+            } else if (req.file) {
+                if (!req.file.originalname) {
+                    throw new Error('Email already registered')
+                }else{
+                    return
+                }
+            }
+        }),
     check('weight')
         .not()
         .isEmpty()
