@@ -15,7 +15,7 @@ const {
      characterAddMovie} = require('../controllers/character.controller')
 const { validateCharacter } = require('../validators')
 
-router.post('/', Auth, isAdmin, upload.single('image'), createCharacter)
+router.post('/', Auth, isAdmin, upload.single('image'), validateCharacter, createCharacter)
 router.get('/',getCharacters)
 router.get('/:id', getCharacterById)
 router.post('/:id', Auth, isAdmin, characterAddMovie)

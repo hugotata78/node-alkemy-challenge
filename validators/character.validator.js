@@ -4,29 +4,38 @@ const { validateResult } = require('./errors')
 
 const validateCharacter = [
     check('name')
-        .not()
-        .isEmpty()
-        .withMessage('Por favor ingrese nombre del personaje!'),
+        .custom(async (name) => {
+            console.log(name)
+            if (!name) {
+                throw new Error('Por favor ingrese el nombre del Personaje!');
+            } else {
+                const character = await Character.findOne({ where: { name: name } })
+                console.log(character)
+                if (character) {
+                    throw new Error('El nombre del personaje ya se encuentra en uso!');
+                }
+            }
+        }),
     check('age')
-        .not()
-        .isEmpty()
-        .withMessage('Por favor ingrese la edad del personaje!'),
-    check('image')
-        .custom((image, { req }) => {
-            if (image) {
-                return
-            } else if (req.file) {
-                if (!req.file.originalname) {
-                    throw new Error('Email already registered')
-                }else{
-                    return
+        .custom(age => {
+            if (!age) {
+                throw new Error('Por favor ingrese la edad del Personaje!');
+            } else {
+                if (typeof parseInt(age) !== 'number') {
+                    throw new Error('La edad del Personaje debe ser un valor numérico!');
                 }
             }
         }),
     check('weight')
-        .not()
-        .isEmpty()
-        .withMessage('Por favor ingrese el peso del personaje!'),
+        .custom(weight => {
+            if (!weight) {
+                throw new Error('Por favor ingrese la edad del Personaje!');
+            } else {
+                if (typeof parseFloat(weight) !== 'number') {
+                    throw new Error('El peso del Personaje debe ser un valor numérico!');
+                }
+            }
+        }),
     check('history')
         .not()
         .isEmpty()

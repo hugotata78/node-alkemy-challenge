@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { Buffer } = require('buffer')
 
-const verifyReqFile = (req) => {
+const verifyReqFile = (req,res) => {
     let image
     if (req.file || req.body.image ) {
         if(req.file){
@@ -12,7 +12,7 @@ const verifyReqFile = (req) => {
         }
     }
     else {
-       return null
+       return res.status(500).json({msg:'Debe seleccionar una imagen para subir al servidor!'})
     }
 }
 
