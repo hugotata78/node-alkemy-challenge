@@ -5,7 +5,7 @@ try {
     validationResult(req).throw()
      next()
 } catch (error) {
-    res.status(403).json({
+    res.status(500).json({
         error: error.array()
     })
 }

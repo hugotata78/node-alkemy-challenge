@@ -10,7 +10,6 @@ const validateCharacter = [
                 throw new Error('Por favor ingrese el nombre del Personaje!');
             } else {
                 const character = await Character.findOne({ where: { name: name } })
-                console.log(character)
                 if (character) {
                     throw new Error('El nombre del personaje ya se encuentra en uso!');
                 }
