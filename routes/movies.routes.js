@@ -14,8 +14,9 @@ const {
     updateMovie,
     deleteMovie,
 } = require('../controllers/movie.controller')
+const { validateMovie } = require('../validators')
 
-router.post('/', Auth,isAdmin, upload.single('image'), createMovie)
+router.post('/', Auth,isAdmin, upload.single('image'), validateMovie, createMovie)
 router.get('/', getMovies)
 router.post('/add-character/:id', Auth, isAdmin, movieAddCharacter)
 router.post('/add-gender/:id', Auth, isAdmin, movieAddGender)

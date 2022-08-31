@@ -28,7 +28,7 @@
  *        title: La Bella y la Bestia
  *        image: https://scontent.fsra4-1.fna.fbcdn.net/v/t31.18172-8/13738170_1067631666652953_5034796494994020967_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=2c4854&_nc_ohc=gnWSswYpdYIAX_a2-5M&_nc_ht=scontent.fsra4-1.fna&oh=00_AT8nMjy1yayRhjFnZVYGb9DfKnnbvMYkvSR3rk_JjRDZTQ&oe=63044D01
  *        creationDate: 2022-08-30
- *        weight: 4.5
+ *        qualification: 4.5
  */
 
 /**
