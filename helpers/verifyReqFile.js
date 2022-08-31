@@ -12,7 +12,7 @@ const verifyReqFile = (req,res) => {
         }
     }
     else {
-       return res.status(500).json({msg:'Debe seleccionar una imagen para subir al servidor!'})
+       return null
     }
 }
 
