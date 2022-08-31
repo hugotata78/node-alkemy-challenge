@@ -17,25 +17,17 @@ const validateCharacter = [
             }
         }),
     check('age')
-        .custom(age => {
-            if (!age) {
-                throw new Error('Por favor ingrese la edad del Personaje!');
-            } else {
-                if (typeof parseInt(age) !== 'number') {
-                    throw new Error('La edad del Personaje debe ser un valor numérico!');
-                }
-            }
-        }),
+        .not()
+        .isEmpty()
+        .withMessage('Por favor ingrese la edad del Personaje!')
+        .isInt()
+        .withMessage('El campo edad debe contener un valor numérico!'),
     check('weight')
-        .custom(weight => {
-            if (!weight) {
-                throw new Error('Por favor ingrese la edad del Personaje!');
-            } else {
-                if (typeof parseFloat(weight) !== 'number') {
-                    throw new Error('El peso del Personaje debe ser un valor numérico!');
-                }
-            }
-        }),
+        .not()
+        .isEmpty()
+        .withMessage('Por favor ingrese el peso del Personaje!')
+        .isFloat()
+        .withMessage('El campo peso debe contener un valor numérico!'), 
     check('history')
         .not()
         .isEmpty()
