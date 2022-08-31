@@ -5,7 +5,7 @@ module.exports = {
         try {
             const { title, creationDate, qualification } = req.body
             const image = verifyReqFile(req)
-
+            if(!image) return res.status(500).json({error:'Debe seleccionar una imagen para subir al servidor!'})
             const movie = await Movie.create({
                 title,
                 image,

@@ -7,6 +7,7 @@ module.exports = {
             const { name } = req.body
             //fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1])
             const image = verifyReqFile(req)
+            if(!image) return res.status(500).json({error:'Debe seleccionar una imagen para subir al servidor!'})
             const gender = await Gender.create({
                 name,
                 image

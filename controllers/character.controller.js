@@ -7,6 +7,7 @@ module.exports = {
         try {
             const { name, age, weight, history } = req.body
             const image = verifyReqFile(req)
+            if(!image) return res.status(500).json({error:'Debe seleccionar una imagen para subir al servidor!'})
             const character = await Character.create({
                 name,
                 age,
