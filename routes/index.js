@@ -10,6 +10,9 @@ const roleRoutes = require('./roles.routes')
 
 const router = Router()
 
+router.get('/', (req,res)=>{
+    res.render('index')
+})
 router.use('/auth',authRoutes)
 router.use('/users',userRoutes)
 router.use('/characters', characterRoutes)
