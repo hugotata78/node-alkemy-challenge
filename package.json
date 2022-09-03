@@ -25,9 +25,6 @@
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.5.0"
   },
-  "engines": {
-    "node": "14.17.4"
-  },
   "devDependencies": {
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
