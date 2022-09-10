@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 //const morgan = require('morgan')
 const indexRoutes = require('./routes')
 
@@ -11,6 +12,7 @@ app.set('views',path.join(__dirname,'views'))
 app.set('view engine', 'ejs')
 
 //app.use(morgan('dev'))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.get('/', (req,res)=>{
