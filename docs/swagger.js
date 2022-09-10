@@ -1,6 +1,7 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 require('dotenv').config()
 
+
 const swaggerDefinition = {
     
         openapi: '3.0.2',
@@ -17,7 +18,7 @@ const swaggerDefinition = {
         components: {
             securitySchemes: {
                 bearerAuth: {
-                    type: "http",
+                    type: process.env.HTTP_VAR,
                     scheme: "bearer",
                 },
             },     	
