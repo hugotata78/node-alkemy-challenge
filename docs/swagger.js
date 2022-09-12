@@ -13,7 +13,7 @@ const swaggerDefinition = {
         servers: [
             {
                 url: `${process.env.SERVER}:${process.env.PORT || 4000}`,
-                scheme:[http,https]
+                schemes:[http,https]
             },
         ],
         components: {
