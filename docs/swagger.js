@@ -10,7 +10,7 @@ const swaggerDefinition = {
             description: 'API Documentation Challenge Alkemy',
             version: '1.0.0',
         },
-        schemes:["http","https"],
+
         servers: [
             {
                 url: `${process.env.SCHEME}://${process.env.HOST}:${process.env.PORT || 4000}`,
@@ -19,7 +19,7 @@ const swaggerDefinition = {
         components: {
             securitySchemes: {
                 bearerAuth: {
-                    type: process.env.SCHEME || 'https',
+                    type: process.env.SCHEME,
                     scheme: "bearer",
                 },
             },     	
