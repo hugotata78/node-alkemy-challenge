@@ -1,7 +1,7 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 require('dotenv').config()
 
-console.log(process.env.SCHEME,process.env.HOST)
+
 const swaggerDefinition = {
     
         openapi: '3.0.2',
